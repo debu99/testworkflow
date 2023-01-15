@@ -22,7 +22,7 @@ jobs:
       - name: test
         id: test
         run: |
-          if docker manifest inspect debu99/testapp:latest; then
+          if docker manifest inspect debu99/testapp:latexst; then
             echo "image_exist=true" >> $GITHUB_OUTPUT
           else
             echo "image_exist=false" >> $GITHUB_OUTPUT
