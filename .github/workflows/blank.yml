@@ -22,8 +22,7 @@ jobs:
       - name: test
         id: test
         run: |
-          docker manifest inspect debu99/testapp:latest; ret=$? || true
-          if [[ $ret -eq 0 ]]; then
+          if docker manifest inspect debu99/testapp:latest; then
             echo "image_exist=true" >> $GITHUB_OUTPUT
           else
             echo "image_exist=false" >> $GITHUB_OUTPUT
