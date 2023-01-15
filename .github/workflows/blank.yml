@@ -22,6 +22,8 @@ jobs:
       - name: test
         id: test
         run: |
+          docker images
+          docker manifest inspect debu99/testapp:latest
           echo "image_exist=true" >> $GITHUB_OUTPUT
     outputs:
       image-exist: ${{ steps.test.outputs.image_exist }}
