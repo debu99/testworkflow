@@ -22,9 +22,12 @@ jobs:
       - name: test
         id: test
         run: |
-          docker images
-          docker manifest inspect debu99/testapp:latest
-          echo "image_exist=true" >> $GITHUB_OUTPUT
+          docker manifest inspect debu99/testapp:latexst; ret=$? || true
+          if [[ $ret -eq 0 ]]; then
+            echo "image_exist=true" >> $GITHUB_OUTPUT
+          else
+            echo "image_exist=false" >> $GITHUB_OUTPUT
+          fi
     outputs:
       image-exist: ${{ steps.test.outputs.image_exist }}
   build:
